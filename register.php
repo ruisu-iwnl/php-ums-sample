@@ -1,5 +1,11 @@
 <?php
+session_start();
 require_once 'db_connect.php';
+
+if (isset($_SESSION['user_id'])) {
+    header("Location: list.php");
+    exit();
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first_name = mysql_real_escape_string($_POST['first_name']);
