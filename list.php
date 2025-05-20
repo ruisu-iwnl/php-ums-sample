@@ -24,13 +24,25 @@ $result = mysql_query($query);
 <html>
 <head>
     <title>User List</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 20px auto; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
+        th { background: #f5f5f5; }
+        .pagination { margin-top: 20px; }
+        .pagination a { padding: 5px 10px; margin: 0 5px; text-decoration: none; border: 1px solid #ddd; }
+        .pagination a:hover { background: #f5f5f5; }
+        .welcome { margin-bottom: 20px; }
+    </style>
 </head>
 <body>
-    <p>Hello, <?php echo htmlspecialchars($_SESSION['user_name']); ?>! 
-       <a href="logout.php">Logout</a>
-    </p>
+    <div class="welcome">
+        <p>Hello, <?php echo htmlspecialchars($_SESSION['user_name']); ?>! 
+           <a href="logout.php">Logout</a>
+        </p>
+    </div>
     
-    <table border="1">
+    <table>
         <tr>
             <th>Name</th>
             <th>Email</th>
@@ -43,7 +55,7 @@ $result = mysql_query($query);
         <?php endwhile; ?>
     </table>
 
-    <div>
+    <div class="pagination">
         <?php if ($total_pages > 1): ?>
             <?php if ($page > 1): ?>
                 <a href="?page=<?php echo $page - 1; ?>">Previous</a>

@@ -36,23 +36,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Login</title>
+    <style>
+        body { font-family: Arial; max-width: 500px; margin: 20px auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        input[type="email"], input[type="password"] { width: 100%; padding: 8px; }
+        input[type="submit"] { background: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        .error { color: red; margin-bottom: 15px; }
+        .links { margin-top: 20px; }
+    </style>
 </head>
 <body>
     <h2>Login</h2>
-    <?php if (isset($error)) echo "<p style='color: red;'>$error</p>"; ?>
+    <?php if (isset($error)) echo "<p class='error'>$error</p>"; ?>
     <form method="POST" action="">
-        <div>
+        <div class="form-group">
             <label>Email:</label>
             <input type="email" name="email" required>
         </div>
-        <div>
+        <div class="form-group">
             <label>Password:</label>
             <input type="password" name="password" required>
         </div>
-        <div>
+        <div class="form-group">
             <input type="submit" value="Login">
         </div>
     </form>
-    <p>Don't have an account? <a href="register.php">Register here</a></p>
+    <div class="links">
+        <p>Don't have an account? <a href="register.php">Register here</a></p>
+    </div>
 </body>
 </html> 

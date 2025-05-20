@@ -39,30 +39,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>User Registration</title>
+    <style>
+        body { font-family: Arial; max-width: 500px; margin: 20px auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        input[type="text"], input[type="email"], input[type="password"] { width: 100%; padding: 8px; }
+        input[type="submit"] { background: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        .links { margin-top: 20px; }
+    </style>
 </head>
 <body>
     <h2>User Registration</h2>
     <form method="POST" action="">
-        <div>
+        <div class="form-group">
             <label>First Name:</label>
             <input type="text" name="first_name" required>
         </div>
-        <div>
+        <div class="form-group">
             <label>Last Name:</label>
             <input type="text" name="last_name" required>
         </div>
-        <div>
+        <div class="form-group">
             <label>Email:</label>
             <input type="email" name="email" required>
         </div>
-        <div>
+        <div class="form-group">
             <label>Password:</label>
             <input type="password" name="password" required>
         </div>
-        <div>
+        <div class="form-group">
             <input type="submit" value="Register">
         </div>
     </form>
-    <p>Already have an account? <a href="login.php">Login here</a></p>
+    <div class="links">
+        <p>Already have an account? <a href="login.php">Login here</a></p>
+    </div>
 </body>
 </html> 
