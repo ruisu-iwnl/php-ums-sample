@@ -15,7 +15,7 @@ $total_pages = ceil($total_users / $users_per_page);
 
 $query = "SELECT id, first_name, last_name, email 
           FROM users 
-          ORDER BY created_at DESC 
+          ORDER BY first_name ASC 
           LIMIT $offset, $users_per_page";
 $result = mysql_query($query);
 ?>
