@@ -13,24 +13,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = mysql_real_escape_string($_POST['email']);
     $password = mysql_real_escape_string($_POST['password']);
     
-    $hashed_password = md5($password);
+    $check_query = "SELECT id FROM users WHERE email = '$email'";
+    $check_result = mysql_query($check_query);
     
-    $query = "INSERT INTO users (first_name, last_name, email) 
-              VALUES ('$first_name', '$last_name', '$email')";
-    
-    if (mysql_query($query)) {
-        $user_id = mysql_insert_id();
+    if (mysql_num_rows($check_result) > 0) {
+        echo "Email already exists. Please use a different email address.";
+    } else {
+        $hashed_password = md5($password);
         
-        $query = "INSERT INTO user_passwords (user_id, password) 
-                  VALUES ($user_id, '$hashed_password')";
+        $query = "INSERT INTO users (first_name, last_name, email) 
+                  VALUES ('$first_name', '$last_name', '$email')";
         
         if (mysql_query($query)) {
-            echo "Registration successful!";
+            $user_id = mysql_insert_id();
+            
+            $query = "INSERT INTO user_passwords (user_id, password) 
+                      VALUES ($user_id, '$hashed_password')";
+            
+            if (mysql_query($query)) {
+                echo "Registration successful!";
+            } else {
+                echo "Error: " . mysql_error();
+            }
         } else {
             echo "Error: " . mysql_error();
         }
-    } else {
-        echo "Error: " . mysql_error();
     }
 }
 ?>
