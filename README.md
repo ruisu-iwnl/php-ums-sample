@@ -1,6 +1,6 @@
 # User Management System
 
-A simple user management system built with PHP 4.5 using legacy mysql functions.
+A simple user management system.
 
 ## Brief Explanation
 Implemented legacy functions for database and session handling, created necessary tables, and built basic pages with PHP integration. 
